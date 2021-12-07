@@ -181,54 +181,84 @@ print("Result 7.SVC: %.2f%% (+/- %.2f%%)" % (np.mean(overall_score7), np.std(ove
 print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
 
 # Print Classification Reports
+csv1 = []
+csv2 = []
+csv3 = []
+csv4 = []
+csv5 = []
+csv6 = []
+csv7 = []
 print("Classification Report for Logistic Regression:")
 print("----------------------------------------------")
-for score in [ "accuracy", "recall", "f1", "balanced_accuracy"]:
+for score in [ "accuracy", "recall", "precision", "f1", "balanced_accuracy"]:
     cv_score = cross_val_score(model1, X, y, scoring=score, cv=kf)
     print(score + " Mean: %.8f" % mean(cv_score) + " STD: %.8f" % std(cv_score) + " Median: %.8f" % median(cv_score))
+    csv1.append(str(mean(cv_score)))
+    csv1.append(str(std(cv_score)))
 print("----------------------------------------------")
 
 print("Classification Report for Random Forest:")
 print("----------------------------------------------")
-for score in [ "accuracy", "recall", "f1", "balanced_accuracy"]:
+for score in [ "accuracy", "recall", "precision", "f1", "balanced_accuracy"]:
     cv_score = cross_val_score(model2, X, y, scoring=score, cv=kf)
     print(score + " Mean: %.8f" % mean(cv_score) + " STD: %.8f" % std(cv_score) + " Median: %.8f" % median(cv_score))
+    csv2.append(str(mean(cv_score)))
+    csv2.append(str(std(cv_score)))
 print("----------------------------------------------")
 
 print("Classification Report for ANN:")
 print("----------------------------------------------")
-for score in [ "accuracy", "recall", "f1", "balanced_accuracy"]:
+for score in [ "accuracy", "recall", "precision", "f1", "balanced_accuracy"]:
     cv_score = cross_val_score(model3_keras, X, y, scoring=score, cv=kf)
     print(score + " Mean: %.8f" % mean(cv_score) + " STD: %.8f" % std(cv_score) + " Median: %.8f" % median(cv_score))
+    csv3.append(str(mean(cv_score)))
+    csv3.append(str(std(cv_score)))
 print("----------------------------------------------")
 
 print("Classification Report for CART:")
 print("----------------------------------------------")
-for score in [ "accuracy", "recall", "f1", "balanced_accuracy"]:
+for score in [ "accuracy", "recall", "precision", "f1", "balanced_accuracy"]:
     cv_score = cross_val_score(model4, X, y, scoring=score, cv=kf)
     print(score + " Mean: %.8f" % mean(cv_score) + " STD: %.8f" % std(cv_score) + " Median: %.8f" % median(cv_score))
+    csv4.append(str(mean(cv_score)))
+    csv4.append(str(std(cv_score)))
 print("----------------------------------------------")
 
 print("Classification Report for Naive Bayes:")
 print("----------------------------------------------")
-for score in [ "accuracy", "recall", "f1", "balanced_accuracy"]:
+for score in [ "accuracy", "recall", "precision", "f1", "balanced_accuracy"]:
     cv_score = cross_val_score(model5, X, y, scoring=score, cv=kf)
     print(score + " Mean: %.8f" % mean(cv_score) + " STD: %.8f" % std(cv_score) + " Median: %.8f" % median(cv_score))
+    csv5.append(str(mean(cv_score)))
+    csv5.append(str(std(cv_score)))
 print("----------------------------------------------")
 
 print("Classification Report for kNN:")
 print("----------------------------------------------")
-for score in [ "accuracy", "recall", "f1", "balanced_accuracy"]:
+for score in [ "accuracy", "recall", "precision", "f1", "balanced_accuracy"]:
     cv_score = cross_val_score(model6, X, y, scoring=score, cv=kf)
     print(score + " Mean: %.8f" % mean(cv_score) + " STD: %.8f" % std(cv_score) + " Median: %.8f" % median(cv_score))
+    csv6.append(str(mean(cv_score)))
+    csv6.append(str(std(cv_score)))
 print("----------------------------------------------")
 
 print("Classification Report for SVC:")
 print("----------------------------------------------")
-for score in [ "accuracy", "recall", "f1", "balanced_accuracy"]:
+for score in [ "accuracy", "recall", "precision", "f1", "balanced_accuracy"]:
     cv_score = cross_val_score(model7, X, y, scoring=score, cv=kf)
     print(score + " Mean: %.8f" % mean(cv_score) + " STD: %.8f" % std(cv_score) + " Median: %.8f" % median(cv_score))
+    csv7.append(str(mean(cv_score)))
+    csv7.append(str(std(cv_score)))
 print("----------------------------------------------")
+print("***** Printing CSV Data to export *************")
+print(csv1)
+print(csv2)
+print(csv3)
+print(csv4)
+print(csv5)
+print(csv6)
+print(csv7)
+print("******** End of CSV ***************************")
 
 # Plot ROC Curves
 # Taken from scikit-learn user guide
